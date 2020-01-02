@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AbstractPage } from 'src/app/utils/abstract-page';
 
 @Component({
   selector: 'app-datos-generales',
   templateUrl: './datos-generales.page.html',
   styleUrls: ['./datos-generales.page.scss'],
 })
-export class DatosGeneralesPage implements OnInit {
-
-  private pageName = 'datos-generales';
+export class DatosGeneralesPage extends AbstractPage implements OnInit {
 
   private readonly people: Array<object> = [
     { id: 'id1' },
     { id: 'id2' },
     { id: 'id3' },
   ];
-
-  constructor() { }
+  
+  constructor(private router: Router) {
+    super();
+  }
 
   ngOnInit() { }
 
@@ -50,61 +52,13 @@ export class DatosGeneralesPage implements OnInit {
       divDesplegarItems.style.display = 'none';
     }
   }
+  
+  onSectionPrevious(): void { }
 
-  changePage(direction: number) {
-    const spCurrentPage = document.getElementById('current-page-' + this.pageName);
-    const spPageCount = document.getElementById('page-count-' + this.pageName);
-    
-    let currentPage = Number(spCurrentPage.innerHTML);
-    let pageCount = Number(spPageCount.innerHTML);
-    
-    currentPage += direction;
+  onSectionNext(): void { }
 
-    console.log('direction: ' + direction);
-    console.log('current page: ' + currentPage);
-    console.log('page count: ' + pageCount);
-
-    // go to previous section
-    if (currentPage <= 0) {
-      this.onSectionPrevious();
-      return;
-    }
-
-    // go to next section
-    if (currentPage > pageCount) {
-      this.onSectionNext();
-      return;
-    }
-
-    // go to next page
-    this.setActivePage(currentPage, pageCount);
-
-    // update page counter
-    spCurrentPage.innerHTML = currentPage.toString();
+  pageName(): string {
+    return 'datos-generales';
   }
 
-  onSectionPrevious() {
-    console.log('PREVIOUS section');
-  }
-
-  onSectionNext() {
-    console.log('NEXT section');
-  }
-
-  setActivePage(currentPage: number, pageCount: number) {
-    for (let pageNumber = 1; pageNumber <= pageCount; pageNumber++) {
-      let pageId = 'page-' + pageNumber + '-' + this.pageName;
-      const page = document.getElementById(pageId);
-
-      console.log('Page: ' + page);
-
-      if (pageNumber == currentPage) {
-        console.log('Activating page: ' + pageId);
-        page.style.display = 'block';
-      } else {
-        console.log('Deactivating page: ' + pageId);
-        page.style.display = 'none';
-      }
-    }
-  }
 }
