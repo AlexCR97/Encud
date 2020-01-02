@@ -1,0 +1,216 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Vivienda</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-vivienda">
+
+    <h4>Características de la vivienda</h4>
+
+    <!-- su vivienda es -->
+    <ion-item>
+      <ion-label position="stacked">Su vivienda es</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="propia">Propia</ion-select-option>
+        <ion-select-option value="rentada">Rentada</ion-select-option>
+        <ion-select-option value="prestada">Prestada</ion-select-option>
+        <ion-select-option value="trabajo">Como prestación de trabajo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Muros -->
+    <ion-item>
+      <ion-label position="stacked">Muros</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="lamina">Lamina</ion-select-option>
+        <ion-select-option value="madera">Madera</ion-select-option>
+        <ion-select-option value="block">Block</ion-select-option>
+        <ion-select-option value="adobe">Adobe</ion-select-option>
+        <ion-select-option value="ladrillo">Ladrillo</ion-select-option>
+        <ion-select-option value="carton">Cartón</ion-select-option>
+        <ion-select-option value="hule">Hule</ion-select-option>
+        <ion-select-option value="lodo">Lodo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Techos -->
+    <ion-item>
+      <ion-label position="stacked">Techos</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="lamina">Lamina</ion-select-option>
+        <ion-select-option value="teja">Teja</ion-select-option>
+        <ion-select-option value="palma">Palma</ion-select-option>
+        <ion-select-option value="asbesto">Asbesto</ion-select-option>
+        <ion-select-option value="cemento">Cemento</ion-select-option>
+        <ion-select-option value="carton">Cartón</ion-select-option>
+        <ion-select-option value="hule">Hule</ion-select-option>
+        <ion-select-option value="madera">Madera</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Pisos -->
+    <ion-item>
+      <ion-label position="stacked">Pisos</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="tierra">Tierra</ion-select-option>
+        <ion-select-option value="cemento">Cemento</ion-select-option>
+        <ion-select-option value="mosaico">Mosaico</ion-select-option>
+        <ion-select-option value="madera">Madera</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Su vivienda cuenta con -->
+    <ion-item>
+      <ion-label position="stacked">Su vivienda cuenta con</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+        <ion-select-option value="recamaras">Recamaras</ion-select-option>
+        <ion-select-option value="comedor">Comedor</ion-select-option>
+        <ion-select-option value="sala">Sala</ion-select-option>
+        <ion-select-option value="cocina">Cocina</ion-select-option>
+        <ion-select-option value="regadera">Regadera</ion-select-option>
+        <ion-select-option value="latrina">Latrina</ion-select-option>
+        <ion-select-option value="pasillo">Pasillo</ion-select-option>
+        <ion-select-option value="patio">Patio</ion-select-option>
+        <ion-select-option value="cochera">Cochera</ion-select-option>
+        <ion-select-option value="sanitario">Sanitario</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </div><!-- page 1 -->
+
+  <!-- page 2 -->
+  <div id="page-2-vivienda" style="display: none;">
+
+    <h4>Características de la vivienda</h4>
+
+    <!-- agua de beber -->
+    <ion-item>
+      <ion-label position="stacked">Agua de beber</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="garrafon">Comprado de garrafón</ion-select-option>
+        <ion-select-option value="red-publica">Red pública dentro de la vivienda</ion-select-option>
+        <ion-select-option value="llave-pública">Llave pública</ion-select-option>
+        <ion-select-option value="otra-vivienda">De otra vivienda</ion-select-option>
+        <ion-select-option value="pipa">De una pipa</ion-select-option>
+        <ion-select-option value="embalada">Embalada en el terreno</ion-select-option>
+        <ion-select-option value="pozo">Pozo de terreno</ion-select-option>
+        <ion-select-option value="rio">Río, lago, pozo o presa</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- drenaje -->
+    <ion-item>
+      <ion-label position="stacked">Drenaje</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="red-publica">Red pública</ion-select-option>
+        <ion-select-option value="fosa">Fosa séptica</ion-select-option>
+        <ion-select-option value="tuberia-barranca">Tubería a barranca o grieta</ion-select-option>
+        <ion-select-option value="tuberia-lago">Tubería a lago, río o mar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- origen de luz -->
+    <ion-item>
+      <ion-label position="stacked">Origen de luz</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="electrica">Energía eléctrica</ion-select-option>
+        <ion-select-option value="celda">Celda solar</ion-select-option>
+        <ion-select-option value="lampara">Lampara de baterías</ion-select-option>
+        <ion-select-option value="velas">Velas o veladoras</ion-select-option>
+        <ion-select-option value="quinque">Quinque</ion-select-option>
+        <ion-select-option value="combinada">Energía eléctrica combinada con celda solar, quinque y velas</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- combustion -->
+    <ion-item>
+      <ion-label position="stacked">Combustión para cocinar</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="gas">Gas</ion-select-option>
+        <ion-select-option value="estufa-electrica">Estufa eléctrica</ion-select-option>
+        <ion-select-option value="lena">Leña</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- cantidad de cuartos -->
+    <ion-item>
+      <ion-label position="stacked">Cantidad de cuartos</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    
+    <!-- cuenta con huerto familiar -->
+    <ion-radio-group>
+      <ion-list-header>
+        <ion-label>¿Esta vivienda cuenta con huerto familiar?</ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Si</ion-label>
+        <ion-radio slot="start" value="si"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-radio slot="start" value="no" checked></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+  </div><!-- page 2 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!--previous-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-vivienda">1</span> / <span id="page-count-vivienda">2</span>
+        </ion-label>
+      </ion-col>
+
+      <!--next-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>

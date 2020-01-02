@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Georeferenciazion</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-georeferenciazion">
+  
+    <h4>Unidad de atención</h4>
+    
+    <!-- jurisdiccion -->
+    <ion-item>
+      <ion-label position="stacked">Jurisdicción</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="1">1</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <!-- municipio -->
+    <ion-item>
+      <ion-label position="stacked">Municipio</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="1">1</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <!-- centro de salud -->
+    <ion-item>
+      <ion-label position="stacked">Centro de salud</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="1">1</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </div><!-- page 1 -->
+
+  <!-- part 2 -->
+  <div id="page-2-georeferenciazion" style="display: none;">
+
+    <h4>Vivienda donde se aplica la encuesta</h4>
+
+    <!-- codigo postal -->
+    <ion-item>
+      <ion-label position="stacked">Codigo Postal</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <!--localidad o colonia -->
+    <ion-item>
+      <ion-label position="stacked">Localidad o colonia</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="1">1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--calle -->
+    <ion-item>
+      <ion-label position="stacked">Calle</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option value="1">1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- numero exterior -->
+    <ion-item>
+      <ion-label position="stacked">Numero exterior</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <!-- numero interior -->
+    <ion-item>
+      <ion-label position="stacked">Numero interior</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <!-- telefono -->
+    <ion-item>
+      <ion-label position="stacked">Telefono</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <!-- referencia de ubicacion -->
+    <ion-item>
+      <ion-label position="stacked">Referencia de ubicación</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+  </div><!-- page 2 -->
+
+  <!-- part 3 -->
+  <div id="page-3-georeferenciazion" class="page-3" style="display: none;">
+
+    <h4>Cantidad de integrantes en la familia</h4>
+
+    <!-- center horizontally -->
+    <div class="center-horizontally">
+
+      <p>Indique la cantidad de personas que viven en el hogar</p>
+
+      <div class="numeric-up-down">
+        
+        <ion-button
+          color="primary"
+          fill="outline"
+          (click)="numericUpDownClick(-1)">
+          <ion-icon name="remove" slot="icon-only"></ion-icon>
+        </ion-button>
+        
+        <p id="pNum">1</p>
+        
+        <ion-button
+          color="primary"
+          fill="outline"
+          (click)="numericUpDownClick(1)">
+          <ion-icon name="add" slot="icon-only"></ion-icon>
+        </ion-button>
+        
+      </div><!-- numeric up down -->
+
+    </div><!-- center horizontally -->
+
+  </div><!-- page 3 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!--previous-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-georeferenciazion">1</span> / <span id="page-count-georeferenciazion">3</span>
+        </ion-label>
+      </ion-col>
+
+      <!--next-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+

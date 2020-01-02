@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Datos generales</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-datos-generales">
+
+    <h4>Datos generales de la familia</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let person of people">
+
+      <!-- desplegar -->
+      <ion-button
+        id="ibDesplegar"
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="desplegarElementos('part-1', person.id)">
+        Nombre del integrante
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="part-1:{{person.id}}">
+        
+        <!-- apellido paterno -->
+        <ion-item>
+          <ion-label position="stacked">Apellido Paterno</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!-- apellido materno -->
+        <ion-item>
+          <ion-label position="stacked">Apellido Materno</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!-- nombres -->
+        <ion-item>
+          <ion-label position="stacked">Nombre(s)</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!--sexo -->
+        <ion-item>
+          <ion-label position="stacked">Sexo</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+            <ion-select-option value="1">1</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- curp -->
+        <ion-item>
+          <ion-label position="stacked">CURP</ion-label>
+        <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!-- fecha de nacimiento -->
+        <ion-item>
+          <ion-label position="stacked">Fecha de nacimiento</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+        </ion-item>
+        
+        <!-- confirmar -->
+        <ion-button
+          id="ibConfirmar"
+          class="ib-confirmar ion-text-capitalize"
+          expand="block"
+          (click)="confirmarElementos('part-1', person.id)">
+          Confirmar
+        </ion-button>
+        
+        <div class="separator"></div>
+        
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 1 -->
+
+  <!-- page 2 -->
+  <div id="page-2-datos-generales" style="display: none;">
+
+    <h4>Datos generales de la familia</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let person of people">
+
+      <!-- desplegar -->
+      <ion-button
+        id="ibDesplegar"
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="desplegarElementos('part-2', person.id)">
+        Nombre del integrante
+      </ion-button>
+      
+      <!-- desplegar items -->
+      <div id="part-2:{{person.id}}">
+      
+        <!-- edad -->
+        <ion-item>
+          <ion-label position="stacked">Edad</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+        
+        <!-- ocupacion -->
+        <ion-item>
+          <ion-label position="stacked">Ocupación</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!--estado civil  -->
+        <ion-item>
+          <ion-label position="stacked">Estado civil</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+            <ion-select-option value="1">1</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!--nacionalidad -->
+        <ion-item>
+          <ion-label position="stacked">Nacionalidad</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+            <ion-select-option value="1">1</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- residencia anterior -->
+        <ion-item>
+          <ion-label position="stacked">Residencia anterior</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <!--ultimo grado de estudios -->
+        <ion-item>
+          <ion-label position="stacked">Último grado de estudios</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+            <ion-select-option value="1">1</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- confirmar -->
+        <ion-button
+          id="ibConfirmar"
+          class="ib-confirmar ion-text-capitalize"
+          expand="block"
+          (click)="confirmarElementos('part-2', person.id)">
+          Confirmar
+        </ion-button>
+        
+        <div class="separator"></div>
+
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 2 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!--previous-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-datos-generales">1</span> / <span id="page-count-datos-generales">2</span>
+        </ion-label>
+      </ion-col>
+
+      <!--next-->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>
