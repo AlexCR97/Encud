@@ -1,11 +1,44 @@
 export abstract class AbstractPage {
 
+    abstract confirmPageNext(): boolean;
     abstract onSectionPrevious(): void;
     abstract onSectionNext(): void;
     abstract pageName(): string;
 
+    changeEnabledState(pageId: string, personId: string) {
+        let divId = pageId + ':' + personId;
+    
+        console.log("Changing enabled state of: " + divId);
+    
+        const container = document.getElementById(divId);
+        let elements = container.getElementsByTagName('ion-item');
+    
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].disabled = !elements[i].disabled;
+        }
+    }
+
+    changeExpandState(pageId: string, personId: string) {
+        let divId = pageId + ':' + personId;
+
+        console.log("Changing expand state of: " + divId);
+
+        const divDesplegarItems = document.getElementById(divId);
+
+        if (divDesplegarItems.style.display == 'none') {
+            divDesplegarItems.style.display = 'block';
+        }
+        else {
+            divDesplegarItems.style.display = 'none';
+        }
+    }
+
     changePage(direction: number) {
-        console.log('changePage() from AbstractPage');
+
+        // verify if user can go to next page
+        if (direction == 1 && !this.confirmPageNext()) {
+            return;
+        }
 
         const spCurrentPage = document.getElementById('current-page-' + this.pageName());
         const spPageCount = document.getElementById('page-count-' + this.pageName());
@@ -34,14 +67,28 @@ export abstract class AbstractPage {
         spCurrentPage.innerHTML = currentPage.toString();
     }
 
+    getCurrentPage() {
+        const spCurrentPage = document.getElementById('current-page-' + this.pageName());
+        let currentPage = Number(spCurrentPage.innerHTML);
+        return currentPage;
+    }
+
+    getPageCount() {
+        const spPageCount = document.getElementById('page-count-' + this.pageName());
+        let pageCount = Number(spPageCount.innerHTML);
+        return pageCount;
+    }
+
     setActivePage(currentPage: number, pageCount: number) {
         for (let pageNumber = 1; pageNumber <= pageCount; pageNumber++) {
             let pageId = 'page-' + pageNumber + '-' + this.pageName();
             const page = document.getElementById(pageId);
     
             if (pageNumber == currentPage) {
+                console.log('Activating page: ' + pageId);
                 page.style.display = 'block';
             } else {
+                console.log('Deactivating page: ' + pageId);
                 page.style.display = 'none';
             }
         }

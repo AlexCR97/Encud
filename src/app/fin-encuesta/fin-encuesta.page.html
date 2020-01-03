@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Encuesta terminada</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <!-- fill height and center vertical -->
+  <div class="fill-height center-vertical">
+    
+    <h5>La encuesta ha terminado</h5>
+    <p>Asegurate de registrar la encuesta una vez que tengas conexión a Internet</p>
+
+  </div><!-- fill height and center vertical -->
+
+</ion-content>
+
+<ion-footer class="ion-padding">
+
+  <!-- nueva encuesta -->
+  <ion-button class="ion-text-capitalize" expand="block" fill="outline" (click)="nuevaEncuesta()">
+    Nueva encuesta
+  </ion-button>
+
+  <!-- regresar al inicio -->
+  <ion-button class="ion-text-capitalize" expand="block" fill="outline" (click)="regresarAlInicio()">
+    Regresar al inicio
+  </ion-button>
+
+</ion-footer>

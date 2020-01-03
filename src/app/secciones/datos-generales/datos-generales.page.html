@@ -33,15 +33,14 @@
 
       <!-- desplegar -->
       <ion-button
-        id="ibDesplegar"
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="desplegarElementos('part-1', person.id)">
-        Nombre del integrante
+        (click)="changeExpandState('page-1-datos-generales', person.id)">
+        {{person.id}}
       </ion-button>
 
       <!-- desplegar items -->
-      <div id="part-1:{{person.id}}">
+      <div id="page-1-datos-generales:{{person.id}}">
         
         <!-- apellido paterno -->
         <ion-item>
@@ -83,10 +82,9 @@
         
         <!-- confirmar -->
         <ion-button
-          id="ibConfirmar"
           class="ib-confirmar ion-text-capitalize"
           expand="block"
-          (click)="confirmarElementos('part-1', person.id)">
+          (click)="changeEnabledState('page-1-datos-generales', person.id)">
           Confirmar
         </ion-button>
         
@@ -108,15 +106,14 @@
 
       <!-- desplegar -->
       <ion-button
-        id="ibDesplegar"
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="desplegarElementos('part-2', person.id)">
-        Nombre del integrante
+        (click)="changeExpandState('page-2-datos-generales', person.id)">
+        {{person.id}}
       </ion-button>
       
       <!-- desplegar items -->
-      <div id="part-2:{{person.id}}">
+      <div id="page-2-datos-generales:{{person.id}}">
       
         <!-- edad -->
         <ion-item>
@@ -162,10 +159,9 @@
         
         <!-- confirmar -->
         <ion-button
-          id="ibConfirmar"
           class="ib-confirmar ion-text-capitalize"
           expand="block"
-          (click)="confirmarElementos('part-2', person.id)">
+          (click)="changeEnabledState('page-2-datos-generales', person.id)">
           Confirmar
         </ion-button>
         
@@ -183,7 +179,7 @@
   <ion-grid>
     <ion-row>
 
-      <!--previous-->
+      <!-- previous -->
       <ion-col>
         <ion-button
           expand="block"
@@ -200,7 +196,7 @@
         </ion-label>
       </ion-col>
 
-      <!--next-->
+      <!-- next -->
       <ion-col>
         <ion-button
           expand="block"

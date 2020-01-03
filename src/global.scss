@@ -86,3 +86,34 @@ h4 {
         }
     }
 }
+
+.fill-height {
+    height: 100%;
+}
+
+.center-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.esquema-vacunacion-item {
+    h6 {
+        text-align: center;
+    }
+
+    .esquema-vacunacion-item-subitem {
+        margin: 15px 0px;
+
+        .hbox {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                font-weight: bold;
+                margin: 2px 15px;
+                text-align: right;
+            }
+        }
+    }
+}

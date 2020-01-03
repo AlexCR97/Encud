@@ -31,24 +31,24 @@
     <!-- jurisdiccion -->
     <ion-item>
       <ion-label position="stacked">Jurisdicción</ion-label>
-      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-        <ion-select-option value="1">1</ion-select-option>
+      <ion-select [(ngModel)]="jurisdiccion" [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option *ngFor="let i of jurisdicciones" value="{{i}}">{{i}}</ion-select-option>
       </ion-select>
     </ion-item>
     
     <!-- municipio -->
     <ion-item>
       <ion-label position="stacked">Municipio</ion-label>
-      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-        <ion-select-option value="1">1</ion-select-option>
+      <ion-select [(ngModel)]="municipio" [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option *ngFor="let i of municipios" value="{{i}}">{{i}}</ion-select-option>
       </ion-select>
     </ion-item>
     
     <!-- centro de salud -->
     <ion-item>
       <ion-label position="stacked">Centro de salud</ion-label>
-      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-        <ion-select-option value="1">1</ion-select-option>
+      <ion-select [(ngModel)]="centroDeSalud" [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option *ngFor="let i of centrosDeSalud" value="{{i}}">{{i}}</ion-select-option>
       </ion-select>
     </ion-item>
   
@@ -62,47 +62,45 @@
     <!-- codigo postal -->
     <ion-item>
       <ion-label position="stacked">Codigo Postal</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="codigoPostal"></ion-input>
     </ion-item>
 
     <!--localidad o colonia -->
     <ion-item>
       <ion-label position="stacked">Localidad o colonia</ion-label>
-      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-        <ion-select-option value="1">1</ion-select-option>
+      <ion-select [(ngModel)]="localidad" [interfaceOptions]="customPopoverOptions" interface="popover">
+        <ion-select-option *ngFor="let i of localidades" value="{{i}}">{{i}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <!--calle -->
     <ion-item>
       <ion-label position="stacked">Calle</ion-label>
-      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-        <ion-select-option value="1">1</ion-select-option>
-      </ion-select>
+      <ion-input type="text" [(ngModel)]="calle"></ion-input>
     </ion-item>
 
     <!-- numero exterior -->
     <ion-item>
       <ion-label position="stacked">Numero exterior</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="numExt"></ion-input>
     </ion-item>
 
     <!-- numero interior -->
     <ion-item>
       <ion-label position="stacked">Numero interior</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="numInt"></ion-input>
     </ion-item>
 
     <!-- telefono -->
     <ion-item>
       <ion-label position="stacked">Telefono</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="telefono"></ion-input>
     </ion-item>
 
     <!-- referencia de ubicacion -->
     <ion-item>
       <ion-label position="stacked">Referencia de ubicación</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="referenciaUbicacion"></ion-input>
     </ion-item>
 
   </div><!-- page 2 -->

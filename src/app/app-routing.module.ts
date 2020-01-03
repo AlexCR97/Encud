@@ -20,6 +20,14 @@ const routes: Routes = [
     path: 'vivienda',
     loadChildren: () => import('./secciones/vivienda/vivienda.module').then( m => m.ViviendaPageModule)
   },
+  {
+    path: 'fin-encuesta',
+    loadChildren: () => import('./fin-encuesta/fin-encuesta.module').then( m => m.FinEncuestaPageModule)
+  },
+  {
+    path: 'esquema-vacunacion-anciano',
+    loadChildren: () => import('./secciones/esquema-vacunacion-anciano/esquema-vacunacion-anciano.module').then( m => m.EsquemaVacunacionAncianoPageModule)
+  },
 ];
 
 @NgModule({
