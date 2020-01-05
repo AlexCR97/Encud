@@ -26,6 +26,8 @@ export class LoginPage implements OnInit {
   }
 
   validateCredentials(): boolean {
+    return true;
+    
     console.log('Username: ' + this.username);
     console.log('Password: ' + this.password);
 

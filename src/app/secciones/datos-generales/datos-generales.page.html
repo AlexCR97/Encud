@@ -29,62 +29,63 @@
     <h4>Datos generales de la familia</h4>
 
     <!-- person item -->
-    <div class="person-item" *ngFor="let person of people">
-
+    <div class="person-item" *ngFor="let i of datosGenerales1">
+      
       <!-- desplegar -->
       <ion-button
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="changeExpandState('page-1-datos-generales', person.id)">
-        {{person.id}}
+        (click)="changeExpandState('page-1-datos-generales', i.id)">
+        {{i.nombres}} {{i.apellidoPaterno}} {{i.apellidoMaterno}}
       </ion-button>
 
       <!-- desplegar items -->
-      <div id="page-1-datos-generales:{{person.id}}">
+      <div id="page-1-datos-generales:{{i.id}}">
         
         <!-- apellido paterno -->
         <ion-item>
           <ion-label position="stacked">Apellido Paterno</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="i.apellidoPaterno"></ion-input>
         </ion-item>
         
         <!-- apellido materno -->
         <ion-item>
           <ion-label position="stacked">Apellido Materno</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="i.apellidoMaterno"></ion-input>
         </ion-item>
         
         <!-- nombres -->
         <ion-item>
           <ion-label position="stacked">Nombre(s)</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="i.nombres"></ion-input>
         </ion-item>
         
         <!--sexo -->
         <ion-item>
           <ion-label position="stacked">Sexo</ion-label>
-          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-            <ion-select-option value="1">1</ion-select-option>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="i.sexo">
+            <ion-select-option value="Hombre">Hombre</ion-select-option>
+            <ion-select-option value="Mujer">Mujer</ion-select-option>
           </ion-select>
         </ion-item>
         
         <!-- curp -->
         <ion-item>
           <ion-label position="stacked">CURP</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="i.curp"></ion-input>
         </ion-item>
         
         <!-- fecha de nacimiento -->
         <ion-item>
           <ion-label position="stacked">Fecha de nacimiento</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+          <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaNacimiento"></ion-datetime>
         </ion-item>
         
         <!-- confirmar -->
         <ion-button
           class="ib-confirmar ion-text-capitalize"
           expand="block"
-          (click)="changeEnabledState('page-1-datos-generales', person.id)">
+          (click)="changeEnabledState('page-1-datos-generales', i.id)">
           Confirmar
         </ion-button>
         
@@ -102,58 +103,66 @@
     <h4>Datos generales de la familia</h4>
 
     <!-- person item -->
-    <div class="person-item" *ngFor="let person of people">
+    <div class="person-item" *ngFor="let i of datosGenerales2">
 
       <!-- desplegar -->
       <ion-button
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="changeExpandState('page-2-datos-generales', person.id)">
-        {{person.id}}
+        (click)="changeExpandState('page-2-datos-generales', i.id)">
+        {{getNombreCompleto(i.id)}}
       </ion-button>
       
       <!-- desplegar items -->
-      <div id="page-2-datos-generales:{{person.id}}">
+      <div id="page-2-datos-generales:{{i.id}}">
       
         <!-- edad -->
         <ion-item>
           <ion-label position="stacked">Edad</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input type="number" [(ngModel)]="i.edad"></ion-input>
         </ion-item>
         
         <!-- ocupacion -->
         <ion-item>
           <ion-label position="stacked">Ocupación</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="i.ocupacion"></ion-input>
         </ion-item>
         
         <!--estado civil  -->
         <ion-item>
           <ion-label position="stacked">Estado civil</ion-label>
-          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-            <ion-select-option value="1">1</ion-select-option>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="i.estadoCivil">
+            <ion-select-option value="Soltero/a">Soltero/a</ion-select-option>
+            <ion-select-option value="Casado/a">Casado/a</ion-select-option>
+            <ion-select-option value="Divorciado/a">Divorciado/a</ion-select-option>
+            <ion-select-option value="Viudo/a">Viudo/a</ion-select-option>
           </ion-select>
         </ion-item>
         
         <!--nacionalidad -->
         <ion-item>
           <ion-label position="stacked">Nacionalidad</ion-label>
-          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-            <ion-select-option value="1">1</ion-select-option>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="i.nacionalidad">
+            <ion-select-option value="Mexico">Mexico</ion-select-option>
           </ion-select>
         </ion-item>
         
         <!-- residencia anterior -->
         <ion-item>
           <ion-label position="stacked">Residencia anterior</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="i.residenciaAnterior"></ion-input>
         </ion-item>
         
         <!--ultimo grado de estudios -->
         <ion-item>
           <ion-label position="stacked">Último grado de estudios</ion-label>
-          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
-            <ion-select-option value="1">1</ion-select-option>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="i.ultimoGradoEstudios">
+            <ion-select-option value="Primaria">Primaria</ion-select-option>
+            <ion-select-option value="Secundaria">Secundaria</ion-select-option>
+            <ion-select-option value="Bachillerato">Bachillerato</ion-select-option>
+            <ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
+            <ion-select-option value="Maestria">Maestria</ion-select-option>
+            <ion-select-option value="Doctorado">Doctorado</ion-select-option>
           </ion-select>
         </ion-item>
         
@@ -161,7 +170,7 @@
         <ion-button
           class="ib-confirmar ion-text-capitalize"
           expand="block"
-          (click)="changeEnabledState('page-2-datos-generales', person.id)">
+          (click)="changeEnabledState('page-2-datos-generales', i.id)">
           Confirmar
         </ion-button>
         

@@ -1,4 +1,15 @@
+import { Router } from '@angular/router';
+
+import { AlertController } from '@ionic/angular';
+
+import { Models } from 'src/app/utils/models';
+
 export abstract class AbstractPage {
+
+    constructor(
+        protected router: Router,
+        protected alertController: AlertController,
+    ) { }
 
     abstract confirmPageNext(): boolean;
     abstract onSectionPrevious(): void;
@@ -73,6 +84,10 @@ export abstract class AbstractPage {
         return currentPage;
     }
 
+    getNombreCompleto(id: string): string {
+        return Models.nombreCompleto(id);
+    }
+
     getPageCount() {
         const spPageCount = document.getElementById('page-count-' + this.pageName());
         let pageCount = Number(spPageCount.innerHTML);
@@ -92,5 +107,28 @@ export abstract class AbstractPage {
                 page.style.display = 'none';
             }
         }
+    }
+
+    async showAlert(title: string, content: string) {
+        const alert = await this.alertController.create({
+            header: title,
+            message: content,
+            buttons: ["Ok"],
+        });
+
+        await alert.present();
+    }
+
+    async showInvalidPropertyAlert(personId: string, errorMessage: string) {
+        let nombreCompleto: string = this.getNombreCompleto(personId);
+
+        const alert = await this.alertController.create({
+            header: `Persona ${personId}`,
+            subHeader: nombreCompleto,
+            message: errorMessage,
+            buttons: ["Ok"],
+        });
+            
+        await alert.present();
     }
 }

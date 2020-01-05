@@ -178,6 +178,40 @@
 
   </div><!-- page 2 -->
 
+  <!-- page 3 -->
+  <div id="page-3-vivienda" class="page-3" style="display: none;">
+
+    <h4>Cantidad de integrantes en la familia</h4>
+
+    <!-- center horizontally -->
+    <div class="center-horizontally">
+
+      <p>Indique la cantidad de personas que viven en el hogar</p>
+
+      <div class="numeric-up-down">
+        
+        <ion-button
+          color="primary"
+          fill="outline"
+          (click)="numericUpDownClick(-1)">
+          <ion-icon name="remove" slot="icon-only"></ion-icon>
+        </ion-button>
+        
+        <p id="pNum">1</p>
+        
+        <ion-button
+          color="primary"
+          fill="outline"
+          (click)="numericUpDownClick(1)">
+          <ion-icon name="add" slot="icon-only"></ion-icon>
+        </ion-button>
+        
+      </div><!-- numeric up down -->
+
+    </div><!-- center horizontally -->
+
+  </div><!-- page 3 -->
+
 </ion-content>
 
 <ion-footer class="encud-footer">
@@ -197,7 +231,7 @@
       <!-- page counter -->
       <ion-col size="2" class="page-counter">
         <ion-label>
-          <span id="current-page-vivienda">1</span> / <span id="page-count-vivienda">2</span>
+          <span id="current-page-vivienda">1</span> / <span id="page-count-vivienda">3</span>
         </ion-label>
       </ion-col>
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { AbstractPage } from 'src/app/utils/abstract-page';
 import { Data } from 'src/app/utils/data';
 import { NonEmptyStringValidator } from 'src/app/validadores/non-empty-string-validator';
+import { ValidatorPool } from 'src/app/validadores/validator-pool';
+import { UnsignedIntegerValidator } from 'src/app/validadores/unsigned-integer-validator';
 
 @Component({
   selector: 'app-georeferenciazion',
@@ -33,73 +35,38 @@ export class GeoreferenciazionPage extends AbstractPage implements OnInit {
   private referenciaUbicacion: string;
   //#endregion
 
-  constructor(private router: Router) {
-    super();
-  }
-  
   ngOnInit() { }
-
-  numericUpDownClick(direction: number) {
-    console.log(direction);
-
-    const pNum = document.getElementById('pNum');
-    let count: number = Number(pNum.innerHTML);
-
-    count += direction;
-
-    if (count <= 0) {
-      return;
-    }
-
-    pNum.innerHTML = count.toString();
-  }
 
   confirmPageNext(): boolean {
     let currentPage = this.getCurrentPage();
+    let validatorPool = new ValidatorPool();
 
     switch (currentPage) {
       case 1: {
-        if (this.jurisdiccion == undefined) {
-          console.log('jurisdiccion is undefined');
+        validatorPool.addValidator(new NonEmptyStringValidator(this.jurisdiccion), 'Debes elegir una jurisdiccion');
+        validatorPool.addValidator(new NonEmptyStringValidator(this.municipio), 'Debes eligir un municipio');
+        validatorPool.addValidator(new NonEmptyStringValidator(this.centroDeSalud), 'Debes eligir un centro de salud');
+
+        if (!validatorPool.validateAll()) {
+          this.showAlert('Propiedad invalida', validatorPool.getLastMessage());
           return false;
         }
-
-        if (this.municipio == undefined) {
-          console.log('municipio is undefined');
-          return false;
-        }
-
-        if (this.centroDeSalud == undefined) {
-          console.log('centroDeSalud is undefined');
-          return false;
-        }
-
-        console.log('jurisdiccion: ' + this.jurisdiccion);
-        console.log('municipio: ' + this.municipio);
-        console.log('centro de salud: ' + this.centroDeSalud);
-
         return true;
-      }
+      } // case 1
 
       case 2: {
+        validatorPool.addValidator(new UnsignedIntegerValidator(this.codigoPostal), 'Debes ingresar un codigo postal');
+        validatorPool.addValidator(new NonEmptyStringValidator(this.localidad), 'Debes eligir una localidad');
+        validatorPool.addValidator(new NonEmptyStringValidator(this.calle), 'Debes ingresar una calle');
+        validatorPool.addValidator(new UnsignedIntegerValidator(this.numExt), 'Debes ingresar un numero exterior');
+        validatorPool.addValidator(new UnsignedIntegerValidator(this.telefono), 'Debes ingresar un numero de telefono');
 
-        let localidadValidator = new NonEmptyStringValidator(this.localidad);
-
-        if (!localidadValidator.validate()) {
-          console.log(localidadValidator.getLastError().errorMessage());
+        if (!validatorPool.validateAll()) {
+          this.showAlert('Propiedad invalida', validatorPool.getLastMessage());
           return false;
         }
-
-        console.log('codigo postal: ' + this.codigoPostal);
-        console.log('localidad o colonia: ' + this.localidad);
-        console.log('calle: ' + this.calle);
-        console.log('numero exterior: ' + this.numExt);
-        console.log('numero interior: ' + this.numInt);
-        console.log('telefono: ' + this.telefono);
-        console.log('referencia de ubicacion: ' + this.referenciaUbicacion);
-
         return true;
-      }
+      } // case 2
     }
 
     return true;

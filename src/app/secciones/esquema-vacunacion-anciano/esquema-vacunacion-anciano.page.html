@@ -29,18 +29,18 @@
     <h4>Esquema de vacunación de ancianos (mayores de 60 años)</h4>
 
     <!-- person item -->
-    <div class="person-item" *ngFor="let person of people">
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAnciano1">
 
       <!-- desplegar -->
       <ion-button
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="changeExpandState('page-1-esquema-vacunacion-anciano', person.id)">
-        {{person.id}}
+        (click)="changeExpandState('page-1-esquema-vacunacion-anciano', i.id)">
+        {{getNombreCompleto(i.id)}}
       </ion-button>
 
       <!-- desplegar items -->
-      <div id="page-1-esquema-vacunacion-anciano:{{person.id}}">
+      <div id="page-1-esquema-vacunacion-anciano:{{i.id}}">
         
         <!-- esquema vacunacion item -->
         <div class="esquema-vacunacion-item">
@@ -55,7 +55,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.neumococicaUnaDosisAnual"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 
@@ -65,7 +65,7 @@
         <ion-button
           class="ib-confirmar ion-text-capitalize"
           expand="block"
-          (click)="changeEnabledState('page-1-esquema-vacunacion-anciano', person.id)">
+          (click)="changeEnabledState('page-1-esquema-vacunacion-anciano', i.id)">
           Confirmar
         </ion-button>
         
@@ -83,18 +83,18 @@
     <h4>Esquema de vacunación de ancianos (mayores de 60 años)</h4>
 
     <!-- person item -->
-    <div class="person-item" *ngFor="let person of people">
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAnciano2">
 
       <!-- desplegar -->
       <ion-button
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="changeExpandState('page-2-esquema-vacunacion-anciano', person.id)">
-        {{person.id}}
+        (click)="changeExpandState('page-2-esquema-vacunacion-anciano', i.id)">
+        {{getNombreCompleto(i.id)}}
       </ion-button>
 
       <!-- desplegar items -->
-      <div id="page-2-esquema-vacunacion-anciano:{{person.id}}">
+      <div id="page-2-esquema-vacunacion-anciano:{{i.id}}">
         
         <!-- esquema vacunacion item -->
         <div class="esquema-vacunacion-item">
@@ -109,7 +109,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdRefuerzoCada10Anios"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 
@@ -121,7 +121,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdPrimeraDosisInicial"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 
@@ -133,7 +133,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdSegunda1MesDespues"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 
@@ -145,7 +145,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdSegunda12MesesDespues"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 
@@ -173,18 +173,18 @@
     <h4>Esquema de vacunación de ancianos (mayores de 60 años)</h4>
 
     <!-- person item -->
-    <div class="person-item" *ngFor="let person of people">
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAnciano2">
 
       <!-- desplegar -->
       <ion-button
         class="ib-desplegar ion-text-capitalize"
         expand="block"
-        (click)="changeExpandState('page-3-esquema-vacunacion-anciano', person.id)">
-        {{person.id}}
+        (click)="changeExpandState('page-3-esquema-vacunacion-anciano', i.id)">
+        {{getNombreCompleto(i.id)}}
       </ion-button>
 
       <!-- desplegar items -->
-      <div id="page-3-esquema-vacunacion-anciano:{{person.id}}">
+      <div id="page-3-esquema-vacunacion-anciano:{{i.id}}">
         
         <!-- esquema vacunacion item -->
         <div class="esquema-vacunacion-item">
@@ -199,7 +199,7 @@
             </div>
             <ion-item>
               <ion-label position="stacked">Fecha de vacunación</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.influenzaUnaDosisAnual"></ion-datetime>
             </ion-item>
           </div><!-- subitem -->
 

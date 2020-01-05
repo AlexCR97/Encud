@@ -1,0 +1,15 @@
+.page-3 {
+    height: 100%;
+
+    .center-horizontally {
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            text-align: center;
+            margin: 10px 20px;
+        }
+    }
+}
