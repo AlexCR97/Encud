@@ -10,7 +10,7 @@ export class LoginPage implements OnInit {
 
   private username: string;
   private password: string;
-
+  
   constructor(private router: Router) { }
 
   ngOnInit() {

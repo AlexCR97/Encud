@@ -5,6 +5,7 @@ import { Data } from 'src/app/utils/data';
 import { NonEmptyStringValidator } from 'src/app/validadores/non-empty-string-validator';
 import { ValidatorPool } from 'src/app/validadores/validator-pool';
 import { UnsignedIntegerValidator } from 'src/app/validadores/unsigned-integer-validator';
+import { Models } from 'src/app/utils/models';
 
 @Component({
   selector: 'app-georeferenciazion',
@@ -43,6 +44,8 @@ export class GeoreferenciazionPage extends AbstractPage implements OnInit {
 
     switch (currentPage) {
       case 1: {
+        return true;
+
         validatorPool.addValidator(new NonEmptyStringValidator(this.jurisdiccion), 'Debes elegir una jurisdiccion');
         validatorPool.addValidator(new NonEmptyStringValidator(this.municipio), 'Debes eligir un municipio');
         validatorPool.addValidator(new NonEmptyStringValidator(this.centroDeSalud), 'Debes eligir un centro de salud');
@@ -55,6 +58,8 @@ export class GeoreferenciazionPage extends AbstractPage implements OnInit {
       } // case 1
 
       case 2: {
+        return true;
+
         validatorPool.addValidator(new UnsignedIntegerValidator(this.codigoPostal), 'Debes ingresar un codigo postal');
         validatorPool.addValidator(new NonEmptyStringValidator(this.localidad), 'Debes eligir una localidad');
         validatorPool.addValidator(new NonEmptyStringValidator(this.calle), 'Debes ingresar una calle');
@@ -72,10 +77,14 @@ export class GeoreferenciazionPage extends AbstractPage implements OnInit {
     return true;
   }
 
-  onSectionPrevious(): void { }
+  onSectionPrevious(): void {
+    this.navController.pop();
+  }
   
   onSectionNext(): void {
-    this.router.navigateByUrl('/vivienda');
+    Models.seccionTerminar('Georeferenciazión');
+    Models.seccionPendiente('Vivienda');
+    this.navController.pop();
   }
 
   pageName(): string {

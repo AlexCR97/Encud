@@ -13,7 +13,7 @@ export class FinEncuestaPage implements OnInit {
   ngOnInit() { }
 
   nuevaEncuesta() {
-    console.log('nueva encuesta');
+    this.router.navigateByUrl('/partes-encuesta');
   }
 
   regresarAlInicio() {

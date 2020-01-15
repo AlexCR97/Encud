@@ -1,14 +1,13 @@
 import { Router } from '@angular/router';
-
-import { AlertController } from '@ionic/angular';
-
+import { AlertController, NavController } from '@ionic/angular';
 import { Models } from 'src/app/utils/models';
 
 export abstract class AbstractPage {
 
     constructor(
-        protected router: Router,
         protected alertController: AlertController,
+        protected navController: NavController,
+        protected router: Router,
     ) { }
 
     abstract confirmPageNext(): boolean;
@@ -28,7 +27,7 @@ export abstract class AbstractPage {
           elements[i].disabled = !elements[i].disabled;
         }
     }
-
+    
     changeExpandState(pageId: string, personId: string) {
         let divId = pageId + ':' + personId;
 

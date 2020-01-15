@@ -3,10 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'georeferenciazion',
@@ -28,6 +31,11 @@ const routes: Routes = [
     path: 'esquema-vacunacion-anciano',
     loadChildren: () => import('./secciones/esquema-vacunacion-anciano/esquema-vacunacion-anciano.module').then( m => m.EsquemaVacunacionAncianoPageModule)
   },
+  {
+    path: 'partes-encuesta',
+    loadChildren: () => import('./partes-encuesta/partes-encuesta.module').then( m => m.PartesEncuestaPageModule)
+  },
+
 ];
 
 @NgModule({

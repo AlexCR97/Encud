@@ -23,6 +23,8 @@ export class DatosGeneralesPage extends AbstractPage implements OnInit {
 
     switch (this.getCurrentPage()) {
       case 1: {
+        return true;
+
         for (let i of this.datosGenerales1) {
           vp.addValidator(new NonEmptyStringValidator(i.apellidoPaterno), 'Apellido paterno invalido');
           vp.addValidator(new NonEmptyStringValidator(i.apellidoMaterno), 'Apellido materno invalido');
@@ -40,6 +42,8 @@ export class DatosGeneralesPage extends AbstractPage implements OnInit {
       } // case 1
 
       case 2: {
+        return true;
+
         for (let i of this.datosGenerales2) {
           vp.addValidator(new UnsignedIntegerValidator(i.edad), 'Edad invalida');
           vp.addValidator(new NonEmptyStringValidator(i.ocupacion), 'Ocupacion invalida');
@@ -60,10 +64,14 @@ export class DatosGeneralesPage extends AbstractPage implements OnInit {
     return true;
   }
 
-  onSectionPrevious(): void { }
+  onSectionPrevious(): void {
+    this.navController.pop();
+  }
 
   onSectionNext(): void {
-    this.router.navigateByUrl('/esquema-vacunacion-anciano');
+    Models.seccionTerminar('Datos generales de la familia');
+    Models.seccionPendiente('Esquemas de vacunación');
+    this.navController.pop();
   }
 
   pageName(): string {

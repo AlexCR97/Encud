@@ -41,10 +41,14 @@ export class ViviendaPage extends AbstractPage implements OnInit {
     return true;
   }
 
-  onSectionPrevious(): void { }
+  onSectionPrevious(): void {
+    this.navController.pop();
+  }
 
   onSectionNext(): void {
-    this.router.navigateByUrl('/datos-generales');
+    Models.seccionTerminar('Vivienda');
+    Models.seccionPendiente('Datos generales de la familia');
+    this.navController.pop();
   }
 
   pageName(): string {

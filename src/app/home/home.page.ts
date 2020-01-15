@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   
-  constructor(private router: Router) {}
+  constructor(
+    private navController: NavController,
+    private router: Router,
+  ) {}
   
   ngOnInit() {
     document.getElementById('divNuevaEncuesta').addEventListener('click', (ev) => this.nuevaEncuesta());
@@ -17,14 +21,13 @@ export class HomePage implements OnInit {
 
   cerrarSesion() {
     console.log('cerrar sesion');
-
-    this.router.navigateByUrl('/login');
+    this.navController.pop();
   }
 
   nuevaEncuesta() {
     console.log('nueva encuesta');
 
-    this.router.navigateByUrl('/georeferenciazion');
+    this.router.navigateByUrl('/partes-encuesta');
   }
 
 }

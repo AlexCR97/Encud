@@ -1,11 +1,38 @@
 export class Models {
 
+    public static readonly secciones = [
+        {
+          nombre: 'Georeferenciazión',
+          label: 'black',
+          icon: 'red',
+          ruta: '/georeferenciazion',
+        },
+        {
+          nombre: 'Vivienda',
+          label: 'lightgray',
+          icon: 'red',
+          ruta: '/vivienda',
+        },
+        {
+          nombre: 'Datos generales de la familia',
+          label: 'lightgray',
+          icon: 'red',
+          ruta: '/datos-generales',
+        },
+        {
+          nombre: 'Esquemas de vacunación',
+          label: 'lightgray',
+          icon: 'red',
+          ruta: '/esquema-vacunacion-anciano',
+        },
+    ];
+
     public static datosGenerales1 = new Array<any>();
     public static datosGenerales2 = new Array<any>();
     public static esquemaVacunacionAnciano1 = new Array<any>();
     public static esquemaVacunacionAnciano2 = new Array<any>();
     public static esquemaVacunacionAnciano3 = new Array<any>();
-
+    
     public static addDatosGenerales1() {
         let count = this.datosGenerales1.length;
         let newId = `#${count + 1}`;
@@ -78,6 +105,39 @@ export class Models {
         return undefined;
     }
     
+    public static seccionTerminar(nombre: string) {
+        let seccion = this.secciones.find(s => s.nombre == nombre);
+
+        if (seccion == undefined) {
+            return;
+        }
+
+        seccion.label = 'black';
+        seccion.icon = 'green';
+    }
+
+    public static seccionPendiente(nombre: string) {
+        let seccion = this.secciones.find(s => s.nombre == nombre);
+
+        if (seccion == undefined) {
+            return;
+        }
+
+        seccion.label = 'black';
+        seccion.icon = 'red';
+    }
+
+    public static seccionInhabilitar(nombre: string) {
+        let seccion = this.secciones.find(s => s.nombre == nombre);
+
+        if (seccion == undefined) {
+            return;
+        }
+
+        seccion.label = 'lightgray';
+        seccion.icon = 'red';
+    }
+
     public static setCount(count: number) {
         console.log('Setting global count: ' + count);
 
@@ -96,6 +156,19 @@ export class Models {
         }
 
         console.log(Models.toString());
+    }
+
+    public static getCount() {
+        return this.datosGenerales1.length;
+    }
+
+    public static verificarEncuesta(): boolean {
+        for (let i of this.secciones) {
+            if (i.icon == 'red') {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static jsonArrayToString(array: Array<any>) {

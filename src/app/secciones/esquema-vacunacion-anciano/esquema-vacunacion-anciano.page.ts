@@ -23,6 +23,8 @@ export class EsquemaVacunacionAncianoPage extends AbstractPage implements OnInit
 
     switch (this.getCurrentPage()) {
       case 1: {
+        return true;
+
         for (let i of this.esquemaVacunacionAnciano1) {
           vp.addValidator(new NonEmptyStringValidator(i.neumococicaUnaDosisAnual), 'Dato invalido: NEUMOCÓCICA POLISACÁRIDA - Una dosis - Anual');
 
@@ -35,6 +37,8 @@ export class EsquemaVacunacionAncianoPage extends AbstractPage implements OnInit
       } // case 1
 
       case 2: {
+        return true;
+
         for (let i of this.esquemaVacunacionAnciano2) {
           vp.addValidator(new NonEmptyStringValidator(i.tdRefuerzoCada10Anios), 'Dato invalido: TD - Refuerzo - Cada 10 años');
           vp.addValidator(new NonEmptyStringValidator(i.tdPrimeraDosisInicial), 'Dato invalido: TD - Primera - Dosis inicial');
@@ -50,6 +54,8 @@ export class EsquemaVacunacionAncianoPage extends AbstractPage implements OnInit
       } // case 2
 
       case 3: {
+        return true;
+
         for (let i of this.esquemaVacunacionAnciano3) {
           vp.addValidator(new NonEmptyStringValidator(i.influenzaUnaDosisAnual), 'Dato invalido: INFLUENZA ESTACIONAL - Una dosis anual');
 
@@ -66,11 +72,12 @@ export class EsquemaVacunacionAncianoPage extends AbstractPage implements OnInit
   }
 
   onSectionPrevious(): void {
-    throw new Error("Method not implemented.");
+    this.navController.pop();
   }
 
   onSectionNext(): void {
-    this.router.navigateByUrl('/fin-encuesta');
+    Models.seccionTerminar('Esquemas de vacunación');
+    this.navController.pop();
   }
 
   pageName(): string {
