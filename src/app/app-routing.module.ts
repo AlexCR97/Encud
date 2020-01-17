@@ -34,7 +34,23 @@ const routes: Routes = [
   {
     path: 'partes-encuesta',
     loadChildren: () => import('./partes-encuesta/partes-encuesta.module').then( m => m.PartesEncuestaPageModule)
+  },  {
+    path: 'esquema-vacunacion-nino',
+    loadChildren: () => import('./secciones/esquema-vacunacion-nino/esquema-vacunacion-nino.module').then( m => m.EsquemaVacunacionNinoPageModule)
   },
+  {
+    path: 'esquema-vacunacion-adol',
+    loadChildren: () => import('./secciones/esquema-vacunacion-adol/esquema-vacunacion-adol.module').then( m => m.EsquemaVacunacionAdolPageModule)
+  },
+  {
+    path: 'esquema-vacunacion-adulto-hom',
+    loadChildren: () => import('./secciones/esquema-vacunacion-adulto-hom/esquema-vacunacion-adulto-hom.module').then( m => m.EsquemaVacunacionAdultoHomPageModule)
+  },
+  {
+    path: 'esquema-vacunacion-adulto-muj',
+    loadChildren: () => import('./secciones/esquema-vacunacion-adulto-muj/esquema-vacunacion-adulto-muj.module').then( m => m.EsquemaVacunacionAdultoMujPageModule)
+  },
+
 
 ];
 

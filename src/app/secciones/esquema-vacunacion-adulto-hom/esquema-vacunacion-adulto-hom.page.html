@@ -1,0 +1,293 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Esquema de vacunacion</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-esquema-vacunacion-adulto-hom">
+
+    <h4>Esquema de vacunación de adulto hombre (de 20 a 59 años)</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAdultoHombre1">
+
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-1-esquema-vacunacion-adulto-hom', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-1-esquema-vacunacion-adulto-hom:{{i.id}}">
+        
+        <!-- esquema vacunacion item -->
+        <div class="esquema-vacunacion-item">
+
+          <h6>SR</h6>
+
+          <p>Sin antescedente vacunal</p>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Primera</p>
+              <p>Al primer contacto</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.srSinAntescedentePrimeraPrimerContacto"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Segunda</p>
+              <p>4 semanas despues de la primera</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.srSinAntescedenteSegunda4Semanas"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+          <p>Con esquema incompleto</p>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Primera</p>
+              <p>Al primero contacto</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.srEsquemaIncompletoPrimeraPrimerContacto"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+        </div><!-- esquema vacunacion item -->
+
+        <!-- confirmar -->
+        <ion-button
+          class="ib-confirmar ion-text-capitalize"
+          expand="block"
+          (click)="changeEnabledState('page-1-esquema-vacunacion-adulto-hom', i.id)">
+          Confirmar
+        </ion-button>
+        
+        <div class="separator"></div>
+        
+      </div><!-- desplegar items -->
+
+    </div><!-- person item -->
+
+  </div><!-- page 1 -->
+
+  <!-- page 2 -->
+  <div id="page-2-esquema-vacunacion-adulto-hom" style="display: none;">
+
+    <h4>Esquema de vacunación de adulto hombre (de 20 a 59 años)</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAdultoHombre2">
+
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-2-esquema-vacunacion-adulto-hom', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-2-esquema-vacunacion-adulto-hom:{{i.id}}">
+        
+        <!-- esquema vacunacion item -->
+        <div class="esquema-vacunacion-item">
+
+          <h6>TD</h6>
+
+          <p>Con esquema completo</p>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Refuerzo</p>
+              <p>Cada 10 años</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdEsquemaCompletoRefuerzo10Anios"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+          <p>Con esquema incompleto o no documentado</p>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Primera</p>
+              <p>Dosis inicial</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdEsquemaIncompletoPrimeraInicial"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+          <p>Con esquema incompleto</p>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Segunda</p>
+              <p>1 mes despues de la primera dosis</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdEsquemaIncompletoSegunda1Mes"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Tercera</p>
+              <p>12 meses despues de la primera dosis</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.tdEsquemaIncompletoTercera12Meses"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+        </div><!-- esquema vacunacion item -->
+
+        <!-- confirmar -->
+        <ion-button
+          class="ib-confirmar ion-text-capitalize"
+          expand="block"
+          (click)="changeEnabledState('page-2-esquema-vacunacion-adulto-hom', i.id)">
+          Confirmar
+        </ion-button>
+        
+        <div class="separator"></div>
+        
+      </div><!-- desplegar items -->
+
+    </div><!-- person item -->
+
+  </div><!-- page 2 -->
+
+  <!-- page 3 -->
+  <div id="page-3-esquema-vacunacion-adulto-hom" style="display: none;">
+
+    <h4>Esquema de vacunación de adulto hombre (de 20 a 59 años)</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of esquemaVacunacionAdultoHombre3">
+
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-3-esquema-vacunacion-adulto-hom', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-3-esquema-vacunacion-adulto-hom:{{i.id}}">
+        
+        <!-- esquema vacunacion item -->
+        <div class="esquema-vacunacion-item">
+
+          <h6>TD</h6>
+
+          <!-- subitem -->
+          <div class="esquema-vacunacion-item-subitem">
+            <div class="hbox">
+              <p>Personas con factores de riesgo</p>
+              <p>Anual</p>
+            </div>
+            <ion-item>
+              <ion-label position="stacked">Fecha de vacunación</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.influenzaFactorRiesgoDosisAnual"></ion-datetime>
+            </ion-item>
+          </div><!-- subitem -->
+
+        </div><!-- esquema vacunacion item -->
+
+        <!-- confirmar -->
+        <ion-button
+          class="ib-confirmar ion-text-capitalize"
+          expand="block"
+          (click)="changeEnabledState('page-3-esquema-vacunacion-adulto-hom', i.id)">
+          Confirmar
+        </ion-button>
+        
+        <div class="separator"></div>
+        
+      </div><!-- desplegar items -->
+
+    </div><!-- person item -->
+
+  </div><!-- page 3 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!-- previous -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-esquema-vacunacion-adulto-hom">1</span> / <span id="page-count-esquema-vacunacion-adulto-hom">3</span>
+        </ion-label>
+      </ion-col>
+
+      <!-- next -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>

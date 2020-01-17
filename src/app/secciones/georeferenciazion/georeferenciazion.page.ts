@@ -86,7 +86,7 @@ export class GeoreferenciazionPage extends AbstractPage implements OnInit {
     Models.seccionPendiente('Vivienda');
     this.navController.pop();
   }
-
+  
   pageName(): string {
     return 'georeferenciazion';
   }

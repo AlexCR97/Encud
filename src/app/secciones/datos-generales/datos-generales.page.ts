@@ -24,7 +24,7 @@ export class DatosGeneralesPage extends AbstractPage implements OnInit {
     switch (this.getCurrentPage()) {
       case 1: {
         return true;
-
+        
         for (let i of this.datosGenerales1) {
           vp.addValidator(new NonEmptyStringValidator(i.apellidoPaterno), 'Apellido paterno invalido');
           vp.addValidator(new NonEmptyStringValidator(i.apellidoMaterno), 'Apellido materno invalido');
