@@ -1,0 +1,427 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Antescedentes personales</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-antescedentes-personales">
+
+    <h4>Alimentación</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of antescedentesPersonales1">
+      
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-1-antescedentes-personales', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-1-antescedentes-personales:{{i.id}}">
+        
+        <p>¿Consume los siguientes alimentos?</p>
+
+        <!-- carnes -->
+        <ion-item lines="none">
+          <ion-label>Carnes</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="i.comeCarnes"></ion-checkbox>
+        </ion-item>
+
+        <!-- cuantes veces carne -->
+        <div *ngIf="i.comeCarnes">
+
+          <!-- cuantas veces al dia -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces al día</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesDiaCarne"></ion-input>
+          </ion-item>
+
+          <!-- cuantas veces a la semana -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces a la semana</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesSemanaCarne"></ion-input>
+          </ion-item>
+
+          <br>
+        </div><!-- cuantas veces a la semana -->
+
+        <!-- frutas -->
+        <ion-item lines="none">
+          <ion-label>Frutas</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="i.comeFrutas"></ion-checkbox>
+        </ion-item>
+
+        <!-- cuantes veces frutas -->
+        <div *ngIf="i.comeFrutas">
+
+          <!-- cuantas veces al dia -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces al día</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesDiaFrutas"></ion-input>
+          </ion-item>
+
+          <!-- cuantas veces a la semana -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces a la semana</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesSemanaFrutas"></ion-input>
+          </ion-item>
+
+          <br>
+        </div><!-- cuantas veces a la semana -->
+
+        <!-- verduras -->
+        <ion-item lines="none">
+          <ion-label>Verduras</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="i.comeVerduras"></ion-checkbox>
+        </ion-item>
+
+        <!-- cuantes veces frutas -->
+        <div *ngIf="i.comeVerduras">
+
+          <!-- cuantas veces al dia -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces al día</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesDiaVerduras"></ion-input>
+          </ion-item>
+
+          <!-- cuantas veces a la semana -->
+          <ion-item>
+            <ion-label position="stacked">Cuantas veces a la semana</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cuantasVecesSemanaVerduras"></ion-input>
+          </ion-item>
+
+          <br>
+        </div><!-- cuantas veces a la semana -->
+        
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 1 -->
+
+  <!-- page 2 -->
+  <div id="page-2-antescedentes-personales">
+
+    <h4>Enfermedades</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of antescedentesPersonales2">
+      
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-2-antescedentes-personales', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-2-antescedentes-personales:{{i.id}}">
+        
+        <!-- infancia -->
+        <div class="infancia">
+
+          <p>Indique las enfermedades que tuvo en su infancia</p>
+
+          <!-- enfermedades -->
+          <ion-item>
+            <ion-label position="stacked">Enfermedades</ion-label>
+            <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+              <ion-select-option *ngFor="let i of enfermedades" value="i">{{i}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <br>
+          
+          <!-- otros -->
+          <ion-item lines="none">
+            <ion-label>Otros (especifíque)</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="i.otrasEnfermedadesInfancia"></ion-checkbox>
+          </ion-item>
+          
+          <!-- otras enfermedades -->
+          <ion-item *ngIf="i.otrasEnfermedadesInfancia">
+            <ion-label position="stacked">Otras enfermedades (separadas por comas ",")</ion-label>
+            <ion-input type="text" [(ngModel)]="i.enfermedadesInfanciaOtras"></ion-input>
+          </ion-item>
+
+          <br>
+
+        </div><!-- infancia -->
+
+        <!-- adultez -->
+        <div class="adultez">
+
+          <p>Indique las enfermedades que tuvo en su adultez</p>
+
+          <!-- enfermedades -->
+          <ion-item>
+            <ion-label position="stacked">Enfermedades</ion-label>
+            <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+              <ion-select-option *ngFor="let i of enfermedades" value="i">{{i}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <br>
+          
+          <!-- otros -->
+          <ion-item lines="none">
+            <ion-label>Otros (especifíque)</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="i.otrasEnfermedadesAdultez"></ion-checkbox>
+          </ion-item>
+          
+          <!-- otras enfermedades -->
+          <ion-item *ngIf="i.otrasEnfermedadesAdultez">
+            <ion-label position="stacked">Otras enfermedades (separadas por comas ",")</ion-label>
+            <ion-input type="text" [(ngModel)]="i.enfermedadesAdultezOtras"></ion-input>
+          </ion-item>
+
+          <br>
+          
+        </div><!-- adultez -->
+
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 2 -->
+
+  <!-- page 3 -->
+  <div id="page-3-antescedentes-personales">
+
+    <h4>Solo mujeres</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of antescedentesPersonales3">
+      
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-3-antescedentes-personales', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-3-antescedentes-personales:{{i.id}}">
+        
+        <!-- menstruacion -->
+        <div class="menstruacion">
+
+          <!-- menarca -->
+          <ion-item>
+            <ion-label position="stacked">Menarca</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaMenarca"></ion-datetime>
+          </ion-item>
+
+          <!-- fpp -->
+          <ion-item>
+            <ion-label position="stacked">FPP</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaFPP"></ion-datetime>
+          </ion-item>
+
+          <!-- fum -->
+          <ion-item>
+            <ion-label position="stacked">FUM</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaFUM"></ion-datetime>
+          </ion-item>
+
+          <!-- ritmo menstrual -->
+          <ion-item>
+            <ion-label position="stacked">Ritmo menstrual</ion-label>
+            <ion-select [interfaceOptions]="customPopoverOptions" interface="popover">
+              <ion-select-option value="">Regular</ion-select-option>
+              <ion-select-option value="">Irregular</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </div><!-- menstruacion -->
+
+        <!-- embarazo -->
+        <div class="embarazo">
+
+          <!-- esta embarazada -->
+          <ion-radio-group>
+            <ion-list-header>
+              <ion-label>¿Está embarazada?</ion-label>
+            </ion-list-header>
+        
+            <ion-item>
+              <ion-label>Si</ion-label>
+              <ion-radio slot="start" value="si"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio slot="start" value="no" checked></ion-radio>
+            </ion-item>
+          </ion-radio-group><!-- esta embarazada -->
+
+          <!-- si esta embarazada -->
+          <div class="si-esta-embarazada">
+
+            <!-- edad gestional -->
+            <ion-item>
+              <ion-label position="stacked">Edad gestional (en semanas)</ion-label>
+              <ion-input type="number" [(ngModel)]="i.edadGestional"></ion-input>
+            </ion-item>
+
+            <!-- trimestre de embarazo -->
+            <ion-item>
+              <ion-label position="stacked">Trimestre de embarazo</ion-label>
+              <ion-input type="number" [(ngModel)]="i.trimestreEmbarazo"></ion-input>
+            </ion-item>
+
+            <!-- toma acido folico -->
+            <ion-item lines="none">
+              <ion-label>¿Toma ácido fólico?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="i.tomaAcidoFolico"></ion-checkbox>
+            </ion-item>
+
+          </div><!-- si esta embarazada -->
+
+          <!-- cantidad gestas -->
+          <ion-item>
+            <ion-label position="stacked">Cantidad de gestas</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cantidadGestas"></ion-input>
+          </ion-item>
+
+          <!-- cantidad partos -->
+          <ion-item>
+            <ion-label position="stacked">Cantidad de partos</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cantidadPartos"></ion-input>
+          </ion-item>
+
+          <!-- cantidad cesareas -->
+          <ion-item>
+            <ion-label position="stacked">Cantidad de cesareas</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cantidadCesareas"></ion-input>
+          </ion-item>
+
+          <!-- cantidad abortos -->
+          <ion-item>
+            <ion-label position="stacked">Cantidad de abortos</ion-label>
+            <ion-input type="number" [(ngModel)]="i.cantidadAbortos"></ion-input>
+          </ion-item>
+
+        </div><!-- embarazo -->
+
+        <!-- anticonceptivos -->
+        <div class="anticonceptivos">
+
+          <!-- tiene anticonceptivos -->
+          <ion-item lines="none">
+            <ion-label>¿Tiene anticonceptivos?</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="i.tieneAnticonceptivos"></ion-checkbox>
+          </ion-item>
+
+          <!-- si tiene anticonceptivos -->
+          <div class="si-tiene-anticonceptivos" *ngIf="i.tieneAnticonceptivos">
+
+            <!-- anticonceptivos -->
+            <ion-item>
+              <ion-label position="stacked">Anticonceptivos</ion-label>
+              <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+                <ion-select-option *ngFor="let i of enfermedades" value="i">{{i}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <!-- fecha ultima toma -->
+            <ion-item>
+              <ion-label position="stacked">Ultima toma</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.ultimaTomaAnticonceptivo"></ion-datetime>
+            </ion-item>
+
+          </div><!-- si tiene anticonceptivos -->
+
+          <!-- prueba papanicolaou-->
+          <ion-item lines="none">
+            <ion-label>Prueba de papanicolau</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="i.pruebaPapanicolaou"></ion-checkbox>
+          </ion-item>
+
+          <!-- fecha papanicolaou -->
+          <ion-item *ngIf="i.pruebaPapanicolaou">
+            <ion-label position="stacked">Fecha papanicolaou</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaPapanicolaou"></ion-datetime>
+          </ion-item>
+
+          <!-- prueba vph-->
+          <ion-item lines="none">
+            <ion-label>Prueba de VPH</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="i.pruebaVPH"></ion-checkbox>
+          </ion-item>
+
+          <!-- fecha papanicolaou -->
+          <ion-item *ngIf="i.pruebaVPH">
+            <ion-label position="stacked">Fecha VPH</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" placeholder="DD/MM/AAAA" [(ngModel)]="i.fechaVPH"></ion-datetime>
+          </ion-item>
+
+        </div><!-- anticonceptivos -->
+
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 3 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!-- previous -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-antescedentes-personales">1</span> / <span id="page-count-antescedentes-personales">3</span>
+        </ion-label>
+      </ion-col>
+
+      <!-- next -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>

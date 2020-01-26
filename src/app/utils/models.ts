@@ -20,6 +20,18 @@ export class Models {
           ruta: '/datos-generales',
         },
         {
+          nombre: 'Antescedentes heredofamiliares',
+          label: 'black',
+          icon: 'red',
+          ruta: '/antescedentes-heredofamiliares',
+        },
+        {
+          nombre: 'Antescedentes personales',
+          label: 'black',
+          icon: 'red',
+          ruta: '/antescedentes-personales',
+        },
+        {
           nombre: 'Esquemas de vacunación de niños',
           label: 'black',
           icon: 'red',
@@ -53,6 +65,10 @@ export class Models {
     
     public static datosGenerales1 = new Array<any>();
     public static datosGenerales2 = new Array<any>();
+    public static antescedentesHeredofamiliares1 = new Array<any>();
+    public static antescedentesPersonales1 = new Array<any>();
+    public static antescedentesPersonales2 = new Array<any>();
+    public static antescedentesPersonales3 = new Array<any>();
     public static esquemaVacunacionNino1 = new Array<any>();
     public static esquemaVacunacionNino2 = new Array<any>();
     public static esquemaVacunacionNino3 = new Array<any>();
@@ -107,6 +123,82 @@ export class Models {
     }
 
     //#endregion
+
+    public static addAntescedentesHeredofamiliares1() {
+        let count = this.antescedentesHeredofamiliares1.length;
+        let newId = `#${count + 1}`;
+
+        this.antescedentesHeredofamiliares1.push({
+            id: newId,
+            padreVivo: false,
+            causasFallecimientoPadre: '',
+            madreViva: false,
+            causasFallecimientoMadre: '',
+        });
+    }
+
+    public static addAntescedentesPersonales1() {
+        let count = this.antescedentesPersonales1.length;
+        let newId = `#${count + 1}`;
+
+        this.antescedentesPersonales1.push({
+            id: newId,
+            comeCarnes: false,
+            comeVerduras: false,
+            comeFrutas: false,
+            cuantasVecesDiaCarne: 0,
+            cuantasVecesSemanaCarne: 0,
+            cuantasVecesDiaVerduras: 0,
+            cuantasVecesSemanaVerduras: 0,
+            cuantasVecesDiaFrutas: 0,
+            cuantasVecesSemanaFrutas: 0,
+        });
+    }
+
+    public static addAntescedentesPersonales2() {
+        let count = this.antescedentesPersonales2.length;
+        let newId = `#${count + 1}`;
+
+        this.antescedentesPersonales2.push({
+            id: newId,
+            enfermedadesInfancia: '',
+            enfermedadesAdultez: '',
+            enfermedadesInfanciaOtras: '',
+            enfermedadesAdultezOtras: '',
+            otrasEnfermedadesInfancia: false,
+            otrasEnfermedadesAdultez: false,
+        });
+    }
+
+    public static addAntescedentesPersonales3() {
+        let count = this.antescedentesPersonales3.length;
+        let newId = `#${count + 1}`;
+
+        this.antescedentesPersonales3.push({
+            id: newId,
+            fechaMenarca: '',
+            fechaFPP: '',
+            fechaFUM: '',
+            ritmoMenstrual: '',
+
+            estaEmbarazada: false,
+            edadGestional: 0,
+            trimestreEmbarazo: 0,
+            tomaAcidoFolico: false,
+            cantidadGestas: 0,
+            cantidadPartos: 0,
+            cantidadCesareas: 0,
+            cantidadAbortos: 0,
+
+            tieneAnticonceptivos: false,
+            anticonceptivos: '',
+            ultimaTomaAnticonceptivo: '',
+            pruebaPapanicolaou: false,
+            pruebaVPH: false,
+            fechaPapanicolaou: '',
+            fechaVPH: '',
+        });
+    }
 
     //#region esquemas de vacunacion
 
@@ -387,6 +479,10 @@ export class Models {
 
         this.datosGenerales1 = [];
         this.datosGenerales2 = [];
+        this.antescedentesHeredofamiliares1 = [];
+        this.antescedentesPersonales1 = [];
+        this.antescedentesPersonales2 = [];
+        this.antescedentesPersonales3 = [];
         this.esquemaVacunacionNino1 = [];
         this.esquemaVacunacionNino2 = [];
         this.esquemaVacunacionNino3 = [];
@@ -411,6 +507,10 @@ export class Models {
         for (let i = 0; i < count; i++) {
             this.addDatosGenerales1();
             this.addDatosGenerales2();
+            this.addAntescedentesHeredofamiliares1();
+            this.addAntescedentesPersonales1();
+            this.addAntescedentesPersonales2();
+            this.addAntescedentesPersonales3();
             this.addEsquemaVacunacionNino1();
             this.addEsquemaVacunacionNino2();
             this.addEsquemaVacunacionNino3();

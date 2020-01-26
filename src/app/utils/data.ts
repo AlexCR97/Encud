@@ -38,4 +38,12 @@ export class Data {
         'Localidad 5',
     ];
 
+    public static readonly enfermedades: Array<string> = [
+        'Enfermedad 1',
+        'Enfermedad 2',
+        'Enfermedad 3',
+        'Enfermedad 4',
+        'Enfermedad 5',
+    ];
+
 }

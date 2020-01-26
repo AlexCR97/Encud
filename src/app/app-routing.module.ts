@@ -50,6 +50,14 @@ const routes: Routes = [
     path: 'esquema-vacunacion-adulto-muj',
     loadChildren: () => import('./secciones/esquema-vacunacion-adulto-muj/esquema-vacunacion-adulto-muj.module').then( m => m.EsquemaVacunacionAdultoMujPageModule)
   },
+  {
+    path: 'antescedentes-heredofamiliares',
+    loadChildren: () => import('./secciones/antescedentes-heredofamiliares/antescedentes-heredofamiliares.module').then( m => m.AntescedentesHeredofamiliaresPageModule)
+  },
+  {
+    path: 'antescedentes-personales',
+    loadChildren: () => import('./secciones/antescedentes-personales/antescedentes-personales.module').then( m => m.AntescedentesPersonalesPageModule)
+  },
 
 
 ];

@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="light"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- title -->
+    <ion-title>Antescedentes heredofamiliares</ion-title>
+
+    <!-- more -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- page 1 -->
+  <div id="page-1-antescedentes-heredofamiliares">
+
+    <h4>Antescedentes heredofamiliares</h4>
+
+    <!-- person item -->
+    <div class="person-item" *ngFor="let i of antescedentesHeredofamiliares1">
+      
+      <!-- desplegar -->
+      <ion-button
+        class="ib-desplegar ion-text-capitalize"
+        expand="block"
+        (click)="changeExpandState('page-1-antescedentes-heredofamiliares', i.id)">
+        {{getNombreCompleto(i.id)}}
+      </ion-button>
+
+      <!-- desplegar items -->
+      <div id="page-1-antescedentes-heredofamiliares:{{i.id}}">
+        
+        <!-- padre vivo -->
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label>¿Padre vivo?</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Si</ion-label>
+            <ion-radio slot="start" value="si"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="no" checked></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <!-- causas del fallecimiento -->
+        <ion-item>
+          <ion-label position="stacked">Causas del fallecimiento</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+            <ion-select-option *ngFor="let i of enfermedades" value="i">{{i}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <br>
+
+        <!-- madre viva -->
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label>¿Madre viva?</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Si</ion-label>
+            <ion-radio slot="start" value="si"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="no" checked></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <!-- causas del fallecimiento -->
+        <ion-item>
+          <ion-label position="stacked">Causas del fallecimiento</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" multiple="true">
+            <ion-select-option *ngFor="let i of enfermedades" value="i">{{i}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="separator"></div>
+        
+      </div><!-- desplegar items -->
+      
+    </div><!-- person item -->
+
+  </div><!-- page 1 -->
+
+</ion-content>
+
+<ion-footer class="encud-footer">
+  <ion-grid>
+    <ion-row>
+
+      <!-- previous -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(-1)">
+          Anterior
+        </ion-button>
+      </ion-col>
+
+      <!-- page counter -->
+      <ion-col size="2" class="page-counter">
+        <ion-label>
+          <span id="current-page-antescedentes-heredofamiliares">1</span> / <span id="page-count-antescedentes-heredofamiliares">1</span>
+        </ion-label>
+      </ion-col>
+
+      <!-- next -->
+      <ion-col>
+        <ion-button
+          expand="block"
+          class="ion-text-capitalize"
+          (click)="changePage(1)">
+          Siguiente
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>
